@@ -20,6 +20,7 @@ private:
 
 public:
     lex(const std::string& regex2token_file_path, const std::string& source_filepath);
+    ~lex();
     // from source file to token stream
     void lexing();
 

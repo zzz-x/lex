@@ -43,6 +43,12 @@ lex::lex(const std::string& regex2token_filepath, const std::string& source_file
     pre_process = new PreProcess(source_file);
 }
 
+lex::~lex() {
+    delete lex_file;
+    delete source_file;
+    delete pre_process;
+}
+
 void lex::lexing() {
     while(pre_process->hasNextLine()) {
         auto line = pre_process->getNextLine();

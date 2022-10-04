@@ -44,6 +44,24 @@
 "_Thread_local"           THREAD_LOCAL
 "__func__"                FUNC_NAME
 
+"[a-zA-Z_][a-zA-Z_0-9]*"			      IDENTIFIER
+
+# integer constants: hex, dec, oct
+# NOTE!!! 按照qutt网站,整常数不包含0???
+"(0[xX])[a-fA-F0-9]+(((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))?"                       I_CONSTANT
+"[1-9][0-9]*(((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))?"                               I_CONSTANT
+"0[0-7]*(((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))?"				                    I_CONSTANT
+
+# floating point constants: sci-rep, sci-rep with decimal(dec, hex)
+"[0-9]+([Ee][+-]?[0-9]+)(f|F|l|L)?"                                                   F_CONSTANT
+"[0-9]*\.[0-9]+([Ee][+-]?[0-9]+)?(f|F|l|L)?"			                                F_CONSTANT
+"[0-9]+\.([Ee][+-]?[0-9]+)?(f|F|l|L)?"			                                    F_CONSTANT
+"0[xX][a-fA-F0-9]+([Pp][+-]?[0-9]+)(f|F|l|L)?"                                        F_CONSTANT
+"0[xX][a-fA-F0-9]*\.[a-fA-F0-9]+([Pp][+-]?[0-9]+)(f|F|l|L)?"                         F_CONSTANT
+"0[xX][a-fA-F0-9]+\.([Pp][+-]?[0-9]+)(f|F|l|L)?"                                     F_CONSTANT
+
+"\"(\\.|[^\\"])*\""    STRING_LITERAL
+
 "\.\.\."			 ELLIPSIS
 ">>="					 RIGHT_ASSIGN
 "<<="					 LEFT_ASSIGN
@@ -91,25 +109,8 @@
 "\|"					 |
 "\?"					 ?
 
-# integer constants: hex, dec, oct
-# NOTE!!! 按照qutt网站,整常数不包含0???
-"(0[xX])[a-fA-F0-9]+(((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))?"                       I_CONSTANT
-"[1-9][0-9]*(((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))?"                               I_CONSTANT
-"0[0-7]*(((u|U)(l|L|ll|LL)?)|((l|L|ll|LL)(u|U)?))?"				                    I_CONSTANT
-
-# floating point constants: sci-rep, sci-rep with decimal(dec, hex)
-"[0-9]+([Ee][+-]?[0-9]+)(f|F|l|L)?"                                                   F_CONSTANT
-"[0-9]*\.[0-9]+([Ee][+-]?[0-9]+)?(f|F|l|L)?"			                                F_CONSTANT
-"[0-9]+\.([Ee][+-]?[0-9]+)?(f|F|l|L)?"			                                    F_CONSTANT
-"0[xX][a-fA-F0-9]+([Pp][+-]?[0-9]+)(f|F|l|L)?"                                        F_CONSTANT
-"0[xX][a-fA-F0-9]*\.[a-fA-F0-9]+([Pp][+-]?[0-9]+)(f|F|l|L)?"                         F_CONSTANT
-"0[xX][a-fA-F0-9]+\.([Pp][+-]?[0-9]+)(f|F|l|L)?"                                     F_CONSTANT
-
-#"((u8|u|U|L)?\"([^\"\\\n]|\([\'\"\?\\abfnrtv]|[0-7]{1,3}|x[a-fA-F0-9]+))*\"[ \t\v\n\f]*)+"	STRING_LITERAL
-
 "/*"                                    MULTI_LINE_COMMENT
 "//.*"                                  SINGLE_LINE_COMMENT
-"[a-zA-Z_][a-zA-Z_0-9]*"			      VARIABLE
 
 # 以下是一些次要的东西(目前不太清楚有啥用的)
 "[ \t\v\n\f]+"            WHITE_SPACES
